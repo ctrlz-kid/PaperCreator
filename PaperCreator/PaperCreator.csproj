@@ -53,7 +53,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Formula.cs" />
-    <Compile Include="MultiplicationFormula\Grade2.cs" />
+    <Compile Include="MultiplicationDivision\Grade2.cs" />
     <Compile Include="Paper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
