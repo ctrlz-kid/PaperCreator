@@ -1,0 +1,8 @@
+c:\users\administrator\documents\visual studio 2017\Projects\PaperCreater\PaperCreater\obj\Debug\PaperCreater.Properties.Resources.resources
+c:\users\administrator\documents\visual studio 2017\Projects\PaperCreater\PaperCreater\obj\Debug\PaperCreater.csproj.GenerateResource.Cache
+c:\users\administrator\documents\visual studio 2017\Projects\PaperCreater\PaperCreater\bin\Debug\PaperCreater.exe.config
+c:\users\administrator\documents\visual studio 2017\Projects\PaperCreater\PaperCreater\bin\Debug\PaperCreater.exe
+c:\users\administrator\documents\visual studio 2017\Projects\PaperCreater\PaperCreater\bin\Debug\PaperCreater.pdb
+c:\users\administrator\documents\visual studio 2017\Projects\PaperCreater\PaperCreater\obj\Debug\PaperCreater.exe
+c:\users\administrator\documents\visual studio 2017\Projects\PaperCreater\PaperCreater\obj\Debug\PaperCreater.pdb
+C:\Users\Administrator\documents\visual studio 2017\Projects\PaperCreater\PaperCreater\obj\Debug\FormulaCreater.Form1.resources
