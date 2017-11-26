@@ -21,7 +21,7 @@ namespace PaperCreator.AdditionSubtraction
             numberRange.Min = 3;
             numberRange.Max = 97;
         }
-        public override Formula Create()
+        public Formula Create()
         {
             int sum = 0;            
             int i;
@@ -78,7 +78,7 @@ namespace PaperCreator.AdditionSubtraction
             if (sum > resultRange.Max)
             {
                 // 结果修正
-                int resultAmend = random.Next(sum - resultRange.Max, sum);
+                int resultAmend = random.Next(sum - resultRange.Max+1, sum);
 
                 formula.Operators[formula.Operators.Count - 1].Number -= resultAmend;
                 sum = sum - resultAmend;
@@ -89,8 +89,8 @@ namespace PaperCreator.AdditionSubtraction
             {
                 // 结果修正
 
-                int resultAmend = random.Next(Math.Min(resultRange.Max * (-1), sum)
-                    , Math.Max(resultRange.Max * (-1), sum));
+                int resultAmend = random.Next(Math.Min(resultRange.Max * (-1), sum-1)
+                    , Math.Max(resultRange.Max * (-1), sum-1));
 
                 FormulaOperator amendOper = new FormulaOperator();
                 if (resultAmend < 0)

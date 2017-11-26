@@ -25,26 +25,27 @@ namespace PaperCreator
         public void Create()
         {
             formulas.Clear();
-            foreach(CreatorSetting setting in creatorSettings)
+
+            CreateArray();
+
+            foreach (CreatorSetting setting in creatorSettings)
             {
                 for(int i=0; i<setting.count; i++)
                 {
                     Formula formula = setting.formulaCreator.Create();
-                    formula.DisplayResult = true;
+                   // formula.DisplayResult = true;
                     string f = formula.ToString();
                     char c;
                     while ( formulas.TryGetValue(f, out c) == true )
                     {
                         formula = setting.formulaCreator.Create();
-                        formula.DisplayResult = true;
+                       // formula.DisplayResult = true;
                         f = formula.ToString();
                     }
 
                     formulas.Add(f, '1');
                 }
             }
-
-            CreateArray();
         }
 
         public void CreateArray()
@@ -56,7 +57,7 @@ namespace PaperCreator
                 for(int i=0; i<formulaArray.Length; i++)
                 {
                     Formula formula = formulaArray[i];
-                    formula.DisplayResult = true;
+                    //formula.DisplayResult = true;
                     string f = formula.ToString();
                     char c;
                     if (formulas.TryGetValue(f, out c) == false)
@@ -68,11 +69,13 @@ namespace PaperCreator
             }
         }
 
-        public void SaveFile()
+        public string SaveFile(string filename)
         {
-            string filename = "output.html";
+            string fileFullPath;
             StreamWriter fn = new StreamWriter(filename, false);
 
+            FileStream fs = fn.BaseStream as FileStream;
+            fileFullPath = fs.Name;
             fn.WriteLine("<table width=800 border=1>");
 
             int line = 0;
@@ -103,7 +106,7 @@ namespace PaperCreator
 
             fn.Close();
 
-
+            return fileFullPath;
         }
 
         public void InsertFormulaCreater(FormulaCreator formulaCreator, int countToCall)

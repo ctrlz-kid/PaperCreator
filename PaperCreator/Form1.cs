@@ -17,24 +17,41 @@ namespace PaperCreator
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void CreateButton_Click(object sender, EventArgs e)
         {
+            // 乘法 5以内
+            paper.InsertFormulaArrayCreater(new MultiplicationDivision.SingleMultiplication(
+                new Range(2, 5), new Range(2, 9)), 24);
 
-            /*AdditionSubtraction.MultiOperationFormulaCreater multiOperationFormulacreater
+            // 除法 5以内
+            paper.InsertFormulaArrayCreater(new MultiplicationDivision.SingleDivision(
+                new Range(2, 5), new Range(2, 9)), 24);
+
+            // 单独加减（100以内）
+            AdditionSubtraction.MultiOperationFormulaCreater singleOperationFormulacreater
+                = new AdditionSubtraction.MultiOperationFormulaCreater();
+            singleOperationFormulacreater.NumberRange.Min = 20;
+            singleOperationFormulacreater.NumberRange.Max = 90;
+            paper.InsertFormulaCreater(singleOperationFormulacreater, 24);
+
+            // 连续加减（100以内）
+            AdditionSubtraction.MultiOperationFormulaCreater multiOperationFormulacreater
                 = new AdditionSubtraction.MultiOperationFormulaCreater();
             multiOperationFormulacreater.CountOfOperations = 2;
-            paper.InsertFormulaCreater(multiOperationFormulacreater, 100);*/
-
-            paper.InsertFormulaArrayCreater(new MultiplicationDivision.ForGrade2(new Range(2, 5), new Range(2, 9)), 20);
+            paper.InsertFormulaCreater(multiOperationFormulacreater, 100-24-24-24);
 
             paper.Create();
         }
 
         private global::PaperCreator.Paper paper = new Paper();
 
-        private void button2_Click(object sender, EventArgs e)
+        private void SaveButton_Click(object sender, EventArgs e)
         {
-            paper.SaveFile();
+            string fullPath = paper.SaveFile("output.html");
+
+            Uri uri = new Uri(fullPath);
+            
+            System.Diagnostics.Process.Start(@"chrome.exe", uri.AbsoluteUri);
         }
     }
 }

@@ -172,11 +172,9 @@ namespace PaperCreator
         public bool DisplayResult { get => displayResult; set => displayResult = value; }
     }
 
-    public abstract class FormulaCreator
+    public interface FormulaCreator
     {
-      
-
-        public abstract Formula Create();
+        Formula Create();
     }
 
     public interface FormulaArrayCreator
