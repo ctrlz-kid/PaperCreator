@@ -19,6 +19,27 @@ namespace PaperCreator
 
         private void CreateButton_Click(object sender, EventArgs e)
         {
+           
+
+            paper.Create();
+        }
+
+        private global::PaperCreator.Paper paper = new Paper();
+
+        private void SaveButton_Click(object sender, EventArgs e)
+        {
+            string s = DateTime.Now.ToString("HH_mm_ss");
+            StringBuilder sb = new StringBuilder();
+            sb.AppendFormat("output_{0}.html", s);
+            string fullPath = paper.SaveFile(sb.ToString());
+
+            Uri uri = new Uri(fullPath);
+            
+            System.Diagnostics.Process.Start(@"chrome.exe", uri.AbsoluteUri);
+        }
+
+        private void InitButton_Click(object sender, EventArgs e)
+        {
             // 乘法 5以内
             paper.InsertFormulaArrayCreater(new MultiplicationDivision.SingleMultiplication(
                 new Range(2, 5), new Range(2, 9)), 24);
@@ -38,20 +59,7 @@ namespace PaperCreator
             AdditionSubtraction.MultiOperationFormulaCreater multiOperationFormulacreater
                 = new AdditionSubtraction.MultiOperationFormulaCreater();
             multiOperationFormulacreater.CountOfOperations = 2;
-            paper.InsertFormulaCreater(multiOperationFormulacreater, 100-24-24-24);
-
-            paper.Create();
-        }
-
-        private global::PaperCreator.Paper paper = new Paper();
-
-        private void SaveButton_Click(object sender, EventArgs e)
-        {
-            string fullPath = paper.SaveFile("output.html");
-
-            Uri uri = new Uri(fullPath);
-            
-            System.Diagnostics.Process.Start(@"chrome.exe", uri.AbsoluteUri);
+            paper.InsertFormulaCreater(multiOperationFormulacreater, 100 - 24 - 24 - 24);
         }
     }
 }
